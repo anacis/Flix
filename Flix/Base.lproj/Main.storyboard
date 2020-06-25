@@ -249,6 +249,7 @@
                                         <size key="customSize" width="122" height="158"/>
                                         <connections>
                                             <outlet property="posterView" destination="lHd-B1-Lzi" id="dZp-BP-O31"/>
+                                            <segue destination="u5w-he-efT" kind="show" id="6CE-so-Pk8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -267,4 +268,7 @@
             <point key="canvasLocation" x="1962.3188405797102" y="858.48214285714278"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6CE-so-Pk8"/>
+    </inferredMetricsTieBreakers>
 </document>
