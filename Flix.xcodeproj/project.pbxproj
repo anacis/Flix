@@ -158,7 +158,7 @@
 			children = (
 				94C92A2524A3C76C00037598 /* Models */,
 				94C92A2424A3C74800037598 /* Views */,
-				94C92A2324A3C57E00037598 /* View Controllers */,
+				94C92A2324A3C57E00037598 /* ViewControllers */,
 				945F740C24A3BC530020B57D /* AppDelegate.h */,
 				945F740D24A3BC530020B57D /* AppDelegate.m */,
 				945F740F24A3BC530020B57D /* SceneDelegate.h */,
@@ -190,7 +190,7 @@
 			path = FlixUITests;
 			sourceTree = "<group>";
 		};
-		94C92A2324A3C57E00037598 /* View Controllers */ = {
+		94C92A2324A3C57E00037598 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				9465710224A400100029981B /* DetailsViewController.h */,
@@ -200,7 +200,7 @@
 				9430BD9A24A53F130037C031 /* MoviesGridViewController.h */,
 				9430BD9B24A53F130037C031 /* MoviesGridViewController.m */,
 			);
-			path = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		94C92A2424A3C74800037598 /* Views */ = {
