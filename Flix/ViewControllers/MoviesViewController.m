@@ -102,6 +102,10 @@
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
+    unichar firstChar = [posterURLString characterAtIndex:0];
+    if (firstChar != '/') {
+        posterURLString = [@"/" stringByAppendingString:posterURLString];
+    }
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     
     NSURL *posterURL =[NSURL URLWithString:fullPosterURLString];
