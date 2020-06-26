@@ -8,12 +8,14 @@
 
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "WebViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+
 
 @end
 
@@ -103,6 +105,23 @@
     
     self.synopsisLabel.text = self.movie[@"overview"];
     [self.synopsisLabel sizeToFit];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSString *movieID = [NSString stringWithFormat:@"%@", self.movie[@"id"]];
+    NSLog(@"%@", movieID);
+    NSString *baseURL = @"https://api.themoviedb.org/3/movie";
+    NSString *endURL = @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    unichar firstChar = [movieID characterAtIndex:0];
+    if (firstChar != '/') {
+        movieID = [@"/" stringByAppendingString:movieID];
+    }
+    NSString *fullURLString = [baseURL stringByAppendingString:movieID];
+    fullURLString = [fullURLString stringByAppendingString:endURL];
+    NSURL *fullURL = [NSURL URLWithString:fullURLString];
+    
+    WebViewController *webViewController = segue.destinationViewController;
+    webViewController.url = fullURL;
 }
 
 /*

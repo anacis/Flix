@@ -10,13 +10,13 @@
 #import "MovieCollectionCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
-#import "SearchBarView.h"
 
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic, strong) NSArray *filteredData;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
 
@@ -30,6 +30,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    self.searchBar.delegate = self;
     
     
     [self fetchMovies];
@@ -163,21 +164,18 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
-- (UICollectionReusableView*)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    
-    UICollectionReusableView *searchView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SearchBarView" forIndexPath:indexPath];
-    return searchView;
-}
+
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
     if (searchText.length != 0) {
         
-         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+         /*NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
                     return [evaluatedObject[@"title"] containsString:searchText];
-                }];
+                }];*/
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(title contains[c] %@)", searchText];
                       
-       self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
+        self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
        
         
         NSLog(@"%@", self.filteredData);
@@ -194,14 +192,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    searchBar.showsCancelButton = YES;
+    self.searchBar.showsCancelButton = YES;
 }
                                  
-
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    searchBar.showsCancelButton = NO;
-    searchBar.text = @"";
-    [searchBar resignFirstResponder];
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
     [self.collectionView reloadData];
     [self fetchMovies];
     
