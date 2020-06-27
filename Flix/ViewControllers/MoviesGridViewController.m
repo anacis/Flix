@@ -57,20 +57,15 @@ static NSString * const reuseIdentifier = @"Cell";
                       message:@"The internet connection appears to be offline."
                preferredStyle:(UIAlertControllerStyleAlert)];
                // create an OK action
-               UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
-                                                                  style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * _Nonnull action) {
-                                                                        // handle response here.
-                                                                        [self fetchMovies];
-                                                                }];
+               UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                   [self fetchMovies];
+               }];
                // add the OK action to the alert controller
                [alert addAction:tryAgainAction];
-               UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                                                style:UIAlertActionStyleDefault
-                                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                                      // handle response here.
-                                                                                    
-                                                                              }];
+               UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                                    handler:^(UIAlertAction * _Nonnull action) {
+                   // Nothing here since we do not want to refresh
+               }];
                // add the OK action to the alert controller
                [alert addAction:cancelAction];
                [self presentViewController:alert animated:YES completion:^{

@@ -54,20 +54,15 @@
                preferredStyle:(UIAlertControllerStyleAlert)];
                [self.refreshControl endRefreshing];
                // create an OK action
-               UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
-                                                                  style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * _Nonnull action) {
-                                                                        // handle response here.
-                                                                        [self fetchMovies];
-                                                                }];
-               // add the OK action to the alert controller
+               UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self fetchMovies];
+               }];
+               
                [alert addAction:tryAgainAction];
-               UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                                                style:UIAlertActionStyleDefault
-                                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                                      // handle response here.
+               UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                                    handler:^(UIAlertAction * _Nonnull action) {
                                                                                     
-                                                                              }];
+               }];
                // add the OK action to the alert controller
                [alert addAction:cancelAction];
                [self presentViewController:alert animated:YES completion:^{
@@ -76,14 +71,9 @@
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               
-               
-               // TODO: Get the array of movies
-               // TODO: Store the movies in a property to use elsewhere
                self.movies = dataDictionary[@"results"];
                self.filteredData = self.movies;
                [self.tableView reloadData];
-               // TODO: Reload your table view data
                [self.refreshControl endRefreshing];
            }
         [self.activityIndicator stopAnimating];
@@ -160,7 +150,6 @@
          }];
                
         self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
-        
         NSLog(@"%@", self.filteredData);
         
     }
@@ -170,7 +159,6 @@
     }
     
     [self.tableView reloadData];
-    //[self fetchMovies];
  
 }
 
