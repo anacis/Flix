@@ -2,3 +2,4 @@
 Pods/AFNetworking/AFNetworking/AFCompatibilityMacros.h
 Pods/Pods.xcodeproj/project.pbxproj
 *.xcscheme
+*.xcsettings
