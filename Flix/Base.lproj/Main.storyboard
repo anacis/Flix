@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="348" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3AI-3E-Hhz">
-                                <rect key="frame" x="0.0" y="12" width="414" height="884"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="348" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3AI-3E-Hhz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="Ssk-cg-hMd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -87,6 +86,13 @@
                                 <color key="color" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3AI-3E-Hhz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1rh-re-nak"/>
+                            <constraint firstItem="3AI-3E-Hhz" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="BiC-Yb-K2m"/>
+                            <constraint firstItem="3AI-3E-Hhz" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="kf5-1m-dXn"/>
+                            <constraint firstItem="3AI-3E-Hhz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kmf-2K-c8P"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="X4G-cR-wTD"/>
@@ -325,7 +331,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6CE-so-Pk8"/>
+        <segue reference="TZw-yD-2di"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
