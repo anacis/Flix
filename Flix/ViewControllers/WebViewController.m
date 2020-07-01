@@ -30,7 +30,7 @@
                 NSArray *movies = dataDictionary[@"results"];
                 //Get first trailer
                 NSString *youtubeID = movies[0][@"key"];
-                NSString *youtubeBase = @"https://www.youtube.com/watch?v=";
+                NSString *const youtubeBase = @"https://www.youtube.com/watch?v=";
                 NSString *youtubeURLString = [youtubeBase stringByAppendingString:youtubeID];
                 self.youtubeURL = [NSURL URLWithString:youtubeURLString];
                 NSLog(@"%@", self.youtubeURL);

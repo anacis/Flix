@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+    NSString *const baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = self.movie[@"poster_path"];
     unichar firstChar = [posterURLString characterAtIndex:0];
     if (firstChar != '/') {
@@ -110,8 +110,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *movieID = [NSString stringWithFormat:@"%@", self.movie[@"id"]];
     NSLog(@"%@", movieID);
-    NSString *baseURL = @"https://api.themoviedb.org/3/movie";
-    NSString *endURL = @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    NSString *const baseURL = @"https://api.themoviedb.org/3/movie";
+    NSString *const endURL = @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
     unichar firstChar = [movieID characterAtIndex:0];
     if (firstChar != '/') {
         movieID = [@"/" stringByAppendingString:movieID];

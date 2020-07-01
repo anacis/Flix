@@ -106,7 +106,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
     NSDictionary *movie = self.filteredData[indexPath.item];
     
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+    NSString *const baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     unichar firstChar = [posterURLString characterAtIndex:0];
     if (firstChar != '/') {
