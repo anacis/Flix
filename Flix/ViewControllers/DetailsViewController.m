@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "WebViewController.h"
+#import "Movie.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -24,14 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString *const baseURLString = @"https://image.tmdb.org/t/p/w500";
-    NSString *posterURLString = self.movie[@"poster_path"];
-    unichar firstChar = [posterURLString characterAtIndex:0];
-    if (firstChar != '/') {
-        posterURLString = [@"/" stringByAppendingString:posterURLString];
-    }
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    NSURL *posterURL =[NSURL URLWithString:fullPosterURLString];
+    NSURL *posterURL = self.movie.posterURL;
     NSURLRequest *request = [NSURLRequest requestWithURL:posterURL];
     
     self.posterView.image = nil;
@@ -63,13 +57,8 @@
     }];
     
     self.backgroundImageView.image = nil;
-    NSString *backdropURLString = self.movie[@"backdrop_path"];
-    unichar firstBackdropChar = [backdropURLString characterAtIndex:0];
-    if (firstBackdropChar != '/') {
-        backdropURLString = [@"/" stringByAppendingString:backdropURLString];
-    }
-    NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
-    NSURL *backdropURL =[NSURL URLWithString:fullBackdropURLString];
+  
+    NSURL *backdropURL = self.movie.backdropURL;
     NSURLRequest *backdropRequest = [NSURLRequest requestWithURL:backdropURL];
     
     [self.backgroundImageView setImageWithURLRequest:backdropRequest placeholderImage:nil
@@ -100,28 +89,16 @@
     
     
     
-    self.titleLabel.text = self.movie[@"title"];
+    self.titleLabel.text = self.movie.title;
     [self.titleLabel sizeToFit];
     
-    self.synopsisLabel.text = self.movie[@"overview"];
+    self.synopsisLabel.text = self.movie.synopsis;
     [self.synopsisLabel sizeToFit];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSString *movieID = [NSString stringWithFormat:@"%@", self.movie[@"id"]];
-    NSLog(@"%@", movieID);
-    NSString *const baseURL = @"https://api.themoviedb.org/3/movie";
-    NSString *const endURL = @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
-    unichar firstChar = [movieID characterAtIndex:0];
-    if (firstChar != '/') {
-        movieID = [@"/" stringByAppendingString:movieID];
-    }
-    NSString *fullURLString = [baseURL stringByAppendingString:movieID];
-    fullURLString = [fullURLString stringByAppendingString:endURL];
-    NSURL *fullURL = [NSURL URLWithString:fullURLString];
-    
     WebViewController *webViewController = segue.destinationViewController;
-    webViewController.url = fullURL;
+    webViewController.url = self.movie.trailerURL;
 }
 
 /*
